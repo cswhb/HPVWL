@@ -1,14 +1,17 @@
-#include<stdio>
-#include<COMMON.h>
-public class Feistel{
+#include "COMMON.h"
+class MyFeistel{
 	public: 
-      void setKey(Address k);
-      int64_t encrypt();
-      int64_t decrypt();
-    private:
-      int64_t key;
+      //void Feistel(Address key):newkey(key),oldkey(0){}
+      Address encrypt(Address inStr,Address key);
+      Address decrypt(Address inStr,Address key);
+};
+Address MyFeistel::encrypt(Address inStr,Address key) {
+	Address rhalf=inStr>>HALF;
+	Address lhalf=(F1(rhalf,key)^inStr)<<HALF;
+	return (rhalf&RMASK)|(lhalf&LMASK);
 }
-int64_t Feistel::decrypt(Address inStr) {
-	Address mask=0x0000000011111111;
-	
+Address MyFeistel::decrypt(Address inStr,Address key) {
+	Address lhalf=inStr<<HALF;
+	Address rhalf=(F1(inStr,key)^(inStr>>HALF));
+	return (rhalf&RMASK)|(lhalf&LMASK);
 }
