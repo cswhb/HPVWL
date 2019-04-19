@@ -1,3 +1,5 @@
+#include "COMMON.h"
+using namespace std; 
 class RBSG{
 	public:
 		RBSG(Address bottom,Address top,unsigned limit):start(0),gap(top-bottom),

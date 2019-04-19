@@ -1,4 +1,5 @@
 #include "RandKey.h" 
+using namespace std;
 class MyFeistel{
 	public: 
       //void Feistel(Address key):newkey(key),oldkey(0){}
