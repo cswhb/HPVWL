@@ -8,4 +8,6 @@
 #define HALF 28
 #define LINESHIFT 8 
 #define PAGESHIFT 12
+#define AREASHIFT 12
+//AREASHIFT :RBSG¥Û–° 
 typedef uint64_t Address;

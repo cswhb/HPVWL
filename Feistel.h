@@ -16,13 +16,13 @@ class MyFeistel{
       Address mask;
 };
 Address MyFeistel::encrypt(Address inStr,bool isOld) {
-	Address key= isOld?randkey->GetOldKey():randkey->GetNewKey();
+	Address key= (isOld?randkey->GetOldKey():randkey->GetNewKey())&MASK;
 	Address rhalf=inStr>>HALF;
 	Address lhalf=(F1(rhalf,key)^inStr)<<HALF;
 	return (rhalf&RMASK)|(lhalf&LMASK);
 }
 Address MyFeistel::decrypt(Address inStr,bool isOld) {
-	Address key= isOld?randkey->GetOldKey():randkey->GetNewKey();
+	Address key= (isOld?randkey->GetOldKey():randkey->GetNewKey())&MASK;
 	Address lhalf=inStr<<HALF;
 	Address rhalf=(F1(inStr,key)^(inStr>>HALF));
 	return (rhalf&RMASK)|(lhalf&LMASK);
