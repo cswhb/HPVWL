@@ -3,13 +3,17 @@ using namespace std;
 class MyFeistel{
 	public: 
       //void Feistel(Address key):newkey(key),oldkey(0){}
-      MyFeistel(){
+      MyFeistel(unsigned num,unsigned areashift){
       	this->randkey=new RanKey(0);
+      	this->num=num;
+      	mask=~(0xffffffffffffffff)<<(areashift);//在SeRBAG的access方法中已经考虑了地址映射的粒度(LINESHIFT) 
 	  }
 	 ~MyFeistel(){delete(randkey);}
       Address encrypt(Address inStr,bool isOld);
       Address decrypt(Address inStr,bool isOld);
       RandKey* randkey;
+      unsigned num;
+      Address mask;
 };
 Address MyFeistel::encrypt(Address inStr,bool isOld) {
 	Address key= isOld?randkey->GetOldKey():randkey->GetNewKey();
