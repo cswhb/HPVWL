@@ -15,9 +15,9 @@ class RandKey{
 			oldKey=newKey;
 			newKey=(Address)rand();
 		} 
-		RandKey(Address key):newKey(key),oldKey(0);
+		RandKey(Address key):newKey(key),oldKey(0){};
 	private:
 		Address newKey;
 		Address oldKey;
-}
+};
 
