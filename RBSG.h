@@ -2,8 +2,8 @@
 using namespace std; 
 class RBSG{
 	public:
-		RBSG(Address bottom,Address top,unsigned limit):start(0),gap(top-bottom),
-	    bottom(bottom),top(top),area(top-bottom),limit(limit),writetimes(0){}//容量=top-bottom 不包括空行 
+		RBSG(Address bottom,Address top,unsigned limit):start(0),gap(top-bottom+1),
+	    bottom(bottom),top(top),area(top-bottom+1),limit(limit),writetimes(0){}//容量=top-bottom+1 不包括空行 
 	    void SetLimit(unsigned limit){
 	    	this->limit=limit;
 		}

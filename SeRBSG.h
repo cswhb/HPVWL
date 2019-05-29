@@ -5,13 +5,13 @@
 #include"COMMON.h"
 using namespace std;
 class SeRBSG{
-	public:
+	public://´«ÈëÐÐºÅ£¨bottom£¬top£© 
 		SeRBSG(int level,Address bottom,Address top,unsigned limit):level(level),limit(limit),reset(0){
-			this->bottom=(bottom>>LINESHIFT)&MASK;
-			this->top=(top>>LINESHIFT)&MASK;
+			this->bottom=bottom 
+			this->top=top;
 			gap=top-bottom;
 			for(Address i=0;i<top-bottom;i++)isOld.push_back(0);
-			for(Address i=0;i<(top-bottom)/1<<(AREASHIFT-LINESHIFT);i++)RBSG.push_back(new RBSG(bottom+i*(1<<(AREASHIFT-LINESHIFT)),bottom+(i+1)*(1<<AREASHIFT)-1,limit););
+			for(Address i=0;i<(top-bottom)/(1<<AREASHIFT)+1;i++)RBSG.push_back(new RBSG(bottom+i*(1<<AREASHIFT),bottom+(i+1)*(1<<AREASHIFT)-1,limit););
 			for(int i=0;i<level;i++)fList.push_back(new MyFeistel((unsigned)i,areashift));
 			writetimes=0; 
 		}
